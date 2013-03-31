@@ -19,7 +19,6 @@ public class NicknameManager {
 	private NickNightPlugin plugin;
 	private Random rand = new Random();
 	
-	
 	public NicknameManager(NickNightPlugin plugin, NickList nicknames){
 		list = nicknames;
 		this.plugin = plugin;
@@ -51,8 +50,9 @@ public class NicknameManager {
 		String current;
 		while(iterator.hasNext()){
 			current = iterator.next();
-			if(isTaken.get(current))
+			if(isTaken.get(current)) {
 				continue;
+			}
 			return current;
 		}
 		return getVetNick();
@@ -92,22 +92,30 @@ public class NicknameManager {
 		throw new OutOfNicksException("Out of comic nicks");
 	}
 	
-
 	public void makeAvailable(String s){
 		isTaken.put(s, false);
 	}
 	
 	public void setNick(Player player, String nickname){
-		final User user = plugin.getEssentials().getUser(player);
-		if(!nameMap.containsValue(nickname) && user.getNickname() == null){
+		
+		if(!nameMap.containsValue(nickname)) {
+			
+			final User user = plugin.getEssentials().getUser(player);
+		
+			if (user == null || user.getNickname() == null)
+				return;
+		
 			user.setNickname(nickname);
 			nameMap.put(player.getName(), nickname);
+			isTaken.put(nickname, true);
 		}
 	}
 	
 	public void unNick(Player player){
-		final User user = plugin.getEssentials().getUser(player);
+		
 		if(nameMap.containsKey(player.getName())){
+			final User user = plugin.getEssentials().getUser(player);
+			if (user == null) return;
 			user.setNickname(null);
 			nameMap.remove(player.getName());
 		}	

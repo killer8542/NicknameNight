@@ -1,6 +1,6 @@
 name: NicknameNight
 main: com.xorinc.nick.NickNightPlugin
-version: 0.0.1
+version: 0.0.2
 author: drXor
 website: http://github.com/drXor
 description: >
@@ -11,10 +11,10 @@ commands:
   nicknight:
     description: General plugin command
     permission: nicknight.use
-    usage: /<command> [reload|nick list]
+    usage: /<command> [list]|stop|reload
 permissions:
   nicknight.use:
-      description: Allows use to /mosounds command
+      description: Allows use to /nicknight command
       default: op
   nicknight.reload:
       description: Reloads the config
