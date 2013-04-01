@@ -26,8 +26,8 @@ public class NickNightPlugin extends JavaPlugin {
 			return;
 		}
 		
-		config = new GeneralConfig(this);
-		config.loadSettings();
+		//config = new GeneralConfig(this);
+		//config.loadSettings();
 		
 		getCommand("nicknight").setExecutor(new NickCommand(this));
 		getServer().getPluginManager().registerEvents(new LoginListener(this), this);
