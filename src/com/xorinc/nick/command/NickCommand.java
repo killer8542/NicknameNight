@@ -28,7 +28,7 @@ public class NickCommand implements CommandExecutor {
 		}
 		
 		if(args.length < 1){
-			sender.sendMessage("/nicknight [<list name>|reload]");
+			sender.sendMessage("/" + label + "[list name]|stop|reload]");
 			return true;
 		}
 		
@@ -38,7 +38,7 @@ public class NickCommand implements CommandExecutor {
 			return true;
 		}*/
 		
-		if(args[0].equals("stop")){
+		if(args[0].equalsIgnoreCase("stop") || args[0].equalsIgnoreCase("off")){
 			if(plugin.isNickNight()){
 				plugin.setNickNight(false);
 				plugin.getManager().unNickAll();
@@ -63,7 +63,7 @@ public class NickCommand implements CommandExecutor {
 		
 		plugin.setManager(new NicknameManager(plugin, list));
 		plugin.setNickNight(true);
-		plugin.getServer().broadcastMessage("" + ChatColor.BLUE + ChatColor.ITALIC + "* *A nickname night has begun!* *");
+		plugin.getServer().broadcastMessage("" + ChatColor.BLUE + ChatColor.ITALIC + "* * A nickname night has begun! * *");
 		for(Player player : plugin.getServer().getOnlinePlayers())
 			plugin.getManager().setNickFromList(player);
 			

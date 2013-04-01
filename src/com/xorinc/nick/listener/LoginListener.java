@@ -17,19 +17,19 @@ public class LoginListener implements Listener {
 		this.plugin = plugin;
 	}
 	
-	@EventHandler(priority = EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent event){
 		if(plugin.isNickNight()){
 			plugin.getManager().setNickFromList(event.getPlayer());
 		}
 	}
 	
-	@EventHandler(priority = EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerQuit(PlayerQuitEvent event){
 		plugin.getManager().unNick(event.getPlayer());
 	}
 	
-	@EventHandler(priority = EventPriority.NORMAL)
+	@EventHandler(priority = EventPriority.LOWEST)
 	public void onPlayerKick(PlayerKickEvent event){
 		plugin.getManager().unNick(event.getPlayer());
 	}

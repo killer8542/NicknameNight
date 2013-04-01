@@ -22,10 +22,6 @@ public class NickList {
 	private HashMap<String, List<String>> nicknames = new HashMap<String, List<String>>();
 	private final List<String> DEFAULT_NAME = new ArrayList<String>();
 	
-    @SuppressWarnings("unused")
-	private String configVersion = "";
-
-	
     public NickList(NickNightPlugin plugin, String configName){
         this.plugin = plugin;
         this.configName = configName + ".yml";
@@ -34,7 +30,6 @@ public class NickList {
     
     public void loadSettings() throws NoSuchNickListException{
     	
-
 		if (!plugin.getDataFolder().exists()) {
 		    plugin.getDataFolder().mkdirs();
 		}
@@ -63,10 +58,6 @@ public class NickList {
             plugin.getLogger().severe("====================================================");
             return;
         }
-        
-        if (!conf.contains("version"))
-        	conf.set("version", 0.1);
-        configVersion = conf.getString("version");
         
         if (!conf.contains("Common"))
         	conf.set("Common", DEFAULT_NAME);

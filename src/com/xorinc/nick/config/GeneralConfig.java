@@ -64,6 +64,10 @@ public class GeneralConfig {
         	conf.set("version", 0.1);
         configVersion = conf.getString("version");
         
+        if (!conf.contains("version"))
+        	conf.set("version", 0.1);
+        configVersion = conf.getString("version");
+        
         try {
             conf.save(f);
         } catch (IOException e) {
